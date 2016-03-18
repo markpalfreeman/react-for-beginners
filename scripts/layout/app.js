@@ -12,12 +12,18 @@ var App = React.createClass({
     }
   },
 
-  addMenuItem: function(menuItem) {
+  addMenuItem: function (menuItem) {
     var timestamp = new Date().getTime();
     // update the state object
     this.state.menu['item-'+ timestamp] = menuItem;
     // then set the state (only pass changed values for perf)
     this.setState({ menu: this.state.menu });
+  },
+
+  loadSamples: function () {
+    this.setState({
+      menu: require('../sample-items')
+    });
   },
 
   render: function () {
@@ -27,7 +33,7 @@ var App = React.createClass({
           <Header tagline="Fresh Seafood Market"/>
         </div>
         <Order/>
-        <Inventory addMenuItem={this.addMenuItem}/>
+        <Inventory addMenuItem={this.addMenuItem} loadSamples={this.loadSamples}/>
       </div>
     )
   }

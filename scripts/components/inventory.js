@@ -7,6 +7,7 @@ var Inventory = React.createClass({
       <section>
         <h2>Inventory</h2>
         <AddMenuItemForm {...this.props}/>
+        <button onClick={this.props.loadSamples}>Load Sample Menu</button>
       </section>
     )
   }
