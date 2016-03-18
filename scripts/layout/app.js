@@ -2,6 +2,7 @@ var React = require('react');
 var Header = require('../components/header');
 var Order = require('../components/order');
 var Inventory = require('../components/inventory');
+var MenuItem = require('../components/menu-item');
 
 var App = React.createClass({
 
@@ -20,6 +21,10 @@ var App = React.createClass({
     this.setState({ menu: this.state.menu });
   },
 
+  renderMenuItem: function (key) {
+    return <MenuItem key={key} index={key} details={this.state.menu[key]}/>
+  },
+
   loadSamples: function () {
     this.setState({
       menu: require('../sample-items')
@@ -31,6 +36,9 @@ var App = React.createClass({
       <div className="catch-of-the-day">
         <div className="menu">
           <Header tagline="Fresh Seafood Market"/>
+          <ul className='list-of-fishes'>
+            {Object.keys(this.state.menu).map(this.renderMenuItem)}
+          </ul>
         </div>
         <Order/>
         <Inventory addMenuItem={this.addMenuItem} loadSamples={this.loadSamples}/>
