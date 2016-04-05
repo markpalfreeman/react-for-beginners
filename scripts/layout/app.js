@@ -1,13 +1,16 @@
-var React = require('react')
-var Header = require('../components/header')
-var Order = require('../components/order')
-var Inventory = require('../components/inventory')
-var MenuItem = require('../components/menu-item')
+const React = require('react')
+import { LinkedStateMixin } from 'react-catalyst'
+const Header = require('../components/header')
+const Order = require('../components/order')
+const Inventory = require('../components/inventory')
+const MenuItem = require('../components/menu-item')
 
 const Rebase = require('re-base')
 const base = Rebase.createClass('https://react-order-menu.firebaseio.com')
 
 var App = React.createClass({
+
+  mixins: [LinkedStateMixin],
 
   getInitialState () {
     return {
