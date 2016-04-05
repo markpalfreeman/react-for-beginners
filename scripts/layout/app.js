@@ -22,6 +22,18 @@ var App = React.createClass({
       context: this,
       state: 'menu'
     })
+
+    const localStore = localStorage.getItem(`order-${this.props.params.storeId}`)
+
+    if (localStore) {
+      this.setState({
+        order: JSON.parse(localStore)
+      })
+    }
+  },
+
+  componentWillUpdate (nextProps, nextState) {
+    localStorage.setItem(`order-${this.props.params.storeId}`, JSON.stringify(nextState.order))
   },
 
   addMenuItem (menuItem) {
@@ -58,7 +70,7 @@ var App = React.createClass({
           </ul>
         </div>
         <Order menu={this.state.menu} order={this.state.order}/>
-        <Inventory addMenuItem={this.addMenuItem} loadSamples={this.loadSamples}/>
+        <Inventory menu={this.state.menu} addMenuItem={this.addMenuItem} loadSamples={this.loadSamples} linkState={this.linkState}/>
       </div>
     )
   }
