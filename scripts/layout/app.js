@@ -4,6 +4,9 @@ var Order = require('../components/order')
 var Inventory = require('../components/inventory')
 var MenuItem = require('../components/menu-item')
 
+const Rebase = require('re-base')
+const base = Rebase.createClass('https://react-order-menu.firebaseio.com')
+
 var App = React.createClass({
 
   getInitialState () {
@@ -11,6 +14,14 @@ var App = React.createClass({
       menu: {},
       order: {}
     }
+  },
+
+  componentDidMount () {
+    // Sync data with proper "store" from Firebase
+    base.syncState(`${this.props.params.storeId}/menu`, {
+      context: this,
+      state: 'menu'
+    })
   },
 
   addMenuItem (menuItem) {
