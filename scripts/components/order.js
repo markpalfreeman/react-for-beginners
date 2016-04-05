@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react')
 
 var Order = React.createClass({
   render: function () {
@@ -6,6 +6,6 @@ var Order = React.createClass({
       <p>Order</p>
     )
   }
-});
+})
 
-module.exports = Order;
+module.exports = Order

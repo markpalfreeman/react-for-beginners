@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react')
 
 var AddMenuItemForm = React.createClass({
 
@@ -10,13 +10,13 @@ var AddMenuItemForm = React.createClass({
       status: this.refs.status.value,
       description: this.refs.description.value,
       image: this.refs.image.value
-    };
+    }
 
-    event.preventDefault();
+    event.preventDefault()
 
     // 2. Add the fish to the App state, clear the form
-    this.props.addMenuItem(fish);
-    this.refs.fishForm.reset();
+    this.props.addMenuItem(fish)
+    this.refs.fishForm.reset()
   },
 
   render: function () {
@@ -36,4 +36,4 @@ var AddMenuItemForm = React.createClass({
   }
 })
 
-module.exports = AddMenuItemForm;
+module.exports = AddMenuItemForm

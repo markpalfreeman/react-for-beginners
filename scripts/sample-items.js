@@ -70,4 +70,4 @@ module.exports = {
     price : 2250,
     status : 'available'
   }
-};
+}

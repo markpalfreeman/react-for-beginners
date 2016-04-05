@@ -1,10 +1,10 @@
-var React = require('react');
-var helpers = require('../helpers');
+var React = require('react')
+var helpers = require('../helpers')
 
 var MenuItem = React.createClass({
 
   render: function () {
-    var details = this.props.details;
+    const { details } = this.props
 
     return (
       <li className='menu-fish'>
@@ -16,6 +16,6 @@ var MenuItem = React.createClass({
       </li>
     )
   }
-});
+})
 
-module.exports = MenuItem;
+module.exports = MenuItem

@@ -1,18 +1,18 @@
-var React = require('react');
-var helpers = require('../helpers');
-var ReactRouter = require('react-router');
-var History = ReactRouter.History;
+var React = require('react')
+var helpers = require('../helpers')
+var ReactRouter = require('react-router')
+var History = ReactRouter.History
 
 var StorePicker = React.createClass({
 
   mixins: [History],
 
   goToStore: function (event) {
-    var storeId = this.refs.storeId.value;
+    var storeId = this.refs.storeId.value
 
-    event.preventDefault();
+    event.preventDefault()
     // Transition from <Storepicker> to <App> using input value (store name)
-    this.history.pushState(null, '/store/' + storeId);
+    this.history.pushState(null, '/store/' + storeId)
 
   },
 
@@ -25,6 +25,6 @@ var StorePicker = React.createClass({
       </form>
     )
   }
-});
+})
 
-module.exports = StorePicker;
+module.exports = StorePicker

@@ -1,5 +1,5 @@
-var React = require('react');
-var AddMenuItemForm = require('./add-menu-item-form');
+var React = require('react')
+var AddMenuItemForm = require('./add-menu-item-form')
 
 var Inventory = React.createClass({
   render: function () {
@@ -11,6 +11,6 @@ var Inventory = React.createClass({
       </section>
     )
   }
-});
+})
 
-module.exports = Inventory;
+module.exports = Inventory
