@@ -1,16 +1,16 @@
-var React = require('react')
-var ReactDOM = require('react-dom')
-var ReactRouter = require('react-router')
-var StorePicker = require('./layout/store-picker')
-var App = require('./layout/app')
-var fourOhFour = require('./components/four-oh-four')
-var createBrowserHistory = require('history/lib/createBrowserHistory')
+const React = require('react')
+const ReactDOM = require('react-dom')
+const ReactRouter = require('react-router')
+const StorePicker = require('./layout/store-picker')
+const App = require('./layout/app')
+const fourOhFour = require('./components/four-oh-four')
+const createBrowserHistory = require('history/lib/createBrowserHistory')
 
-var Router = ReactRouter.Router
-var Route = ReactRouter.Route
-var Navigation = ReactRouter.Navigation
+const Router = ReactRouter.Router
+const Route = ReactRouter.Route
+const Navigation = ReactRouter.Navigation
 
-var routes = (
+const routes = (
   <Router history={createBrowserHistory()}>
     <Route path='/' component={StorePicker}/>
     <Route path='store/:storeId' component={App}/>
