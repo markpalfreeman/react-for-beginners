@@ -12,7 +12,23 @@ const Order = React.createClass({
       return <li key={key}>Sorry, item no longer available! {removeButton}</li>
     } else {
       const itemTotal = count * parseInt(item.price)
-      return <li key={key}>{count}lbs {item.name} <span>{helpers.formatPrice(itemTotal)}</span>{removeButton}</li>
+      return (
+        <li key={key}>
+          <span>
+            <CSSTransitionGroup
+              className='count'
+              component='span'
+              transitionName='count'
+              transitionEnterTimeout={300}
+              transitionLeaveTimeout={300}
+            >
+              <span key={count}>{count}</span>
+            </CSSTransitionGroup>
+            lbs {item.name} {removeButton}
+          </span>
+          <span className='price'>{helpers.formatPrice(itemTotal)}</span>
+        </li>
+      )
     }
   },
 
@@ -40,7 +56,7 @@ const Order = React.createClass({
           component='ul'
           transitionName='order'
           transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}
+          transitionLeaveTimeout={300}
         >
           {orderIds.map(this.renderOrder)}
           <li className='total'><strong>Total:</strong>{helpers.formatPrice(total)}</li>
