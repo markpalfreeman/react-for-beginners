@@ -5,12 +5,13 @@ var Order = React.createClass({
   renderOrder (key) {
     const item = this.props.menu[key]
     const count = this.props.order[key]
+    const removeButton = <button onClick={this.props.removeItemFromOrder.bind(null, key)}>&times;</button>
 
     if (!item) {
-      return <li key={key}>Sorry, item no longer available!</li>
+      return <li key={key}>Sorry, item no longer available! {removeButton}</li>
     } else {
       const itemTotal = count * parseInt(item.price)
-      return <li key={key}>{count}lbs {item.name} <span>{helpers.formatPrice(itemTotal)}</span></li>
+      return <li key={key}>{count}lbs {item.name} <span>{helpers.formatPrice(itemTotal)}</span>{removeButton}</li>
     }
   },
 

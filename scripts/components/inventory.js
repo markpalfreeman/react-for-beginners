@@ -1,6 +1,5 @@
 const React = require('react')
 const AddMenuItemForm = require('./add-menu-item-form')
-import EditMenuItem from './edit-menu-item'
 
 const Inventory = React.createClass({
   render: function () {
@@ -19,6 +18,7 @@ const Inventory = React.createClass({
             </select>
             <textarea type='text' valueLink={linkState(`menu.${key}.description`)} placeholder='Description'></textarea>
             <input type="text" valueLink={linkState(`menu.${key}.image`)} placeholder='URL to Image'/>
+            <button onClick={this.props.removeMenuItem.bind(null, key)}>Remove Item</button>
           </div>
         ))}
         <AddMenuItemForm {...this.props}/>

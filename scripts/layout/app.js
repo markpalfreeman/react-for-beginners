@@ -47,9 +47,25 @@ var App = React.createClass({
     this.setState({ menu: this.state.menu })
   },
 
+  removeMenuItem (key) {
+    if (confirm('Are you sure you want to remove this item?')) {
+      this.state.menu[key] = null;
+      this.setState({
+        menu: this.state.menu
+      })
+    }
+  },
+
   addItemToOrder (key) {
     // Add to existing count, or create it and set to 1
     this.state.order[key] = this.state.order[key] + 1 || 1
+    this.setState({
+      order: this.state.order
+    })
+  },
+
+  removeItemFromOrder (key) {
+    delete this.state.order[key]
     this.setState({
       order: this.state.order
     })
@@ -72,8 +88,8 @@ var App = React.createClass({
             ))}
           </ul>
         </div>
-        <Order menu={this.state.menu} order={this.state.order}/>
-        <Inventory menu={this.state.menu} addMenuItem={this.addMenuItem} loadSamples={this.loadSamples} linkState={this.linkState}/>
+        <Order menu={this.state.menu} order={this.state.order} removeItemFromOrder={this.removeItemFromOrder}/>
+        <Inventory menu={this.state.menu} addMenuItem={this.addMenuItem} removeMenuItem={this.removeMenuItem} loadSamples={this.loadSamples} linkState={this.linkState}/>
       </div>
     )
   }
