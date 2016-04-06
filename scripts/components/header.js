@@ -1,11 +1,11 @@
-var React = require('react')
+import React from 'react'
 
-var Header = React.createClass({
+const Header = React.createClass({
   propTypes: {
     tagline: React.PropTypes.string.isRequired
   },
 
-  render: function () {
+  render () {
     return (
       <header className="top">
         <h1>Catch
@@ -20,4 +20,4 @@ var Header = React.createClass({
   }
 })
 
-module.exports = Header
+export default Header

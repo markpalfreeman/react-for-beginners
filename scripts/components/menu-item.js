@@ -1,5 +1,5 @@
-const React = require('react')
-const helpers = require('../helpers')
+import React from 'react'
+import helpers from '../helpers'
 
 const { object, func } = React.PropTypes
 
@@ -31,4 +31,4 @@ const MenuItem = React.createClass({
   }
 })
 
-module.exports = MenuItem
+export default MenuItem

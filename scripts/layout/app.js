@@ -1,14 +1,15 @@
-const React = require('react')
+import React from 'react'
 import { LinkedStateMixin } from 'react-catalyst'
-const Header = require('../components/header')
-const Order = require('../components/order')
-const Inventory = require('../components/inventory')
-const MenuItem = require('../components/menu-item')
+import Header from '../components/header'
+import Order from '../components/order'
+import Inventory from '../components/inventory'
+import MenuItem from '../components/menu-item'
 
-const Rebase = require('re-base')
+// Rebase
+import Rebase from 're-base'
 const base = Rebase.createClass('https://react-order-menu.firebaseio.com')
 
-var App = React.createClass({
+const App = React.createClass({
 
   mixins: [LinkedStateMixin],
 
@@ -40,7 +41,7 @@ var App = React.createClass({
   },
 
   addMenuItem (menuItem) {
-    var timestamp = new Date().getTime()
+    const timestamp = new Date().getTime()
     // update the state object
     this.state.menu['item-'+ timestamp] = menuItem
     // then set the state (only pass changed values for perf)
@@ -109,4 +110,4 @@ var App = React.createClass({
   }
 })
 
-module.exports = App
+export default App

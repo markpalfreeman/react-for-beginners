@@ -1,13 +1,13 @@
-var React = require('react')
+import React from 'react'
 
-var AddMenuItemForm = React.createClass({
+const AddMenuItemForm = React.createClass({
   propTypes: {
     addMenuItem: React.PropTypes.func.isRequired
   },
 
-  createMenuItem: function (event) {
+  createMenuItem (event) {
     // 1. Create fish object from form data
-    var fish = {
+    const fish = {
       name: this.refs.name.value,
       price: this.refs.price.value,
       status: this.refs.status.value,
@@ -22,7 +22,7 @@ var AddMenuItemForm = React.createClass({
     this.refs.fishForm.reset()
   },
 
-  render: function () {
+  render () {
     return (
       <form className='fish-edit' ref='fishForm' onSubmit={this.createMenuItem}>
         <input type='text' ref='name' placeholder='Fish name'/>
@@ -39,4 +39,4 @@ var AddMenuItemForm = React.createClass({
   }
 })
 
-module.exports = AddMenuItemForm
+export default AddMenuItemForm

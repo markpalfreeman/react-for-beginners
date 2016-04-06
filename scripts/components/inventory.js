@@ -1,5 +1,6 @@
-const React = require('react')
-const AddMenuItemForm = require('./add-menu-item-form')
+import React from 'react'
+import AddMenuItemForm from './add-menu-item-form'
+
 const { object, func } = React.PropTypes
 
 const Inventory = React.createClass({
@@ -11,7 +12,7 @@ const Inventory = React.createClass({
     linkState: func.isRequired
   },
 
-  render: function () {
+  render () {
     const { linkState } = this.props
 
     return (
@@ -37,4 +38,4 @@ const Inventory = React.createClass({
   }
 })
 
-module.exports = Inventory
+export default Inventory

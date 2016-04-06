@@ -1,6 +1,6 @@
-const React = require('react')
-const CSSTransitionGroup = require('react-addons-css-transition-group')
-const helpers = require('../helpers')
+import React from 'react'
+import CSSTransitionGroup from 'react-addons-css-transition-group'
+import helpers from '../helpers'
 
 const { object, func } = React.PropTypes
 
@@ -75,4 +75,4 @@ const Order = React.createClass({
   }
 })
 
-module.exports = Order
+export default Order

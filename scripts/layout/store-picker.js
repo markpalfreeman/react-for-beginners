@@ -1,14 +1,13 @@
-var React = require('react')
-var helpers = require('../helpers')
-var ReactRouter = require('react-router')
-var History = ReactRouter.History
+import React from 'react'
+import helpers from '../helpers'
+import { History } from 'react-router'
 
-var StorePicker = React.createClass({
+const StorePicker = React.createClass({
 
   mixins: [History],
 
-  goToStore: function (event) {
-    var storeId = this.refs.storeId.value
+  goToStore (event) {
+    const storeId = this.refs.storeId.value
 
     event.preventDefault()
     // Transition from <Storepicker> to <App> using input value (store name)
@@ -16,7 +15,7 @@ var StorePicker = React.createClass({
 
   },
 
-  render: function () {
+  render () {
     return (
       <form className='store-selector' onSubmit={this.goToStore}>
         <h2>Please enter A Store</h2>
@@ -27,4 +26,4 @@ var StorePicker = React.createClass({
   }
 })
 
-module.exports = StorePicker
+export default StorePicker
