@@ -84,12 +84,26 @@ var App = React.createClass({
           <Header tagline="Fresh Seafood Market"/>
           <ul className='list-of-fishes'>
             {Object.keys(this.state.menu).map((key) => (
-              <MenuItem key={key} index={key} details={this.state.menu[key]} addToOrder={this.addItemToOrder}/>
+              <MenuItem key={key}
+                index={key}
+                details={this.state.menu[key]}
+                addToOrder={this.addItemToOrder}
+              />
             ))}
           </ul>
         </div>
-        <Order menu={this.state.menu} order={this.state.order} removeItemFromOrder={this.removeItemFromOrder}/>
-        <Inventory menu={this.state.menu} addMenuItem={this.addMenuItem} removeMenuItem={this.removeMenuItem} loadSamples={this.loadSamples} linkState={this.linkState}/>
+        <Order
+          menu={this.state.menu}
+          order={this.state.order}
+          removeItemFromOrder={this.removeItemFromOrder}
+        />
+        <Inventory
+          menu={this.state.menu}
+          addMenuItem={this.addMenuItem}
+          removeMenuItem={this.removeMenuItem}
+          loadSamples={this.loadSamples}
+          linkState={this.linkState}
+        />
       </div>
     )
   }

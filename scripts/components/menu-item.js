@@ -1,7 +1,13 @@
-var React = require('react')
-var helpers = require('../helpers')
+const React = require('react')
+const helpers = require('../helpers')
 
-var MenuItem = React.createClass({
+const { object, func } = React.PropTypes
+
+const MenuItem = React.createClass({
+  propTypes: {
+    details: object.isRequired,
+    addToOrder: func.isRequired
+  },
 
   addItemToOrder () {
     this.props.addToOrder(this.props.index)

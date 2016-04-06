@@ -1,6 +1,10 @@
 var React = require('react')
 
 var Header = React.createClass({
+  propTypes: {
+    tagline: React.PropTypes.string.isRequired
+  },
+
   render: function () {
     return (
       <header className="top">

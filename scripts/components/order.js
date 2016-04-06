@@ -2,7 +2,15 @@ const React = require('react')
 const CSSTransitionGroup = require('react-addons-css-transition-group')
 const helpers = require('../helpers')
 
+const { object, func } = React.PropTypes
+
 const Order = React.createClass({
+  propTypes: {
+    menu: object.isRequired,
+    order: object.isRequired,
+    removeItemFromOrder: func
+  },
+
   renderOrder (key) {
     const item = this.props.menu[key]
     const count = this.props.order[key]

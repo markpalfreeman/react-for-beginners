@@ -1,7 +1,16 @@
 const React = require('react')
 const AddMenuItemForm = require('./add-menu-item-form')
+const { object, func } = React.PropTypes
 
 const Inventory = React.createClass({
+  propTypes: {
+    menu: object.isRequired,
+    addMenuItem: func.isRequired,
+    removeMenuItem: func.isRequired,
+    loadSamples: func,
+    linkState: func.isRequired
+  },
+
   render: function () {
     const { linkState } = this.props
 

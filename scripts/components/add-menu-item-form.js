@@ -1,6 +1,9 @@
 var React = require('react')
 
 var AddMenuItemForm = React.createClass({
+  propTypes: {
+    addMenuItem: React.PropTypes.func.isRequired
+  },
 
   createMenuItem: function (event) {
     // 1. Create fish object from form data
