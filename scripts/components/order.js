@@ -1,7 +1,8 @@
-var React = require('react')
-var helpers = require('../helpers')
+const React = require('react')
+const CSSTransitionGroup = require('react-addons-css-transition-group')
+const helpers = require('../helpers')
 
-var Order = React.createClass({
+const Order = React.createClass({
   renderOrder (key) {
     const item = this.props.menu[key]
     const count = this.props.order[key]
@@ -33,10 +34,18 @@ var Order = React.createClass({
     return (
       <div className='order-wrap'>
         <h2 className='order-title'></h2>
-        <ul className='order'>
+
+        <CSSTransitionGroup
+          className='order'
+          component='ul'
+          transitionName='order'
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+        >
           {orderIds.map(this.renderOrder)}
           <li className='total'><strong>Total:</strong>{helpers.formatPrice(total)}</li>
-        </ul>
+        </CSSTransitionGroup>
+
       </div>
     )
   }
