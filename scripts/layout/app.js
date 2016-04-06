@@ -4,21 +4,29 @@ import Header from '../components/header'
 import Order from '../components/order'
 import Inventory from '../components/inventory'
 import MenuItem from '../components/menu-item'
+import reactMixin from 'react-mixin'
 
 // Rebase
 import Rebase from 're-base'
 const base = Rebase.createClass('https://react-order-menu.firebaseio.com')
 
-const App = React.createClass({
+class App extends React.Component {
+  constructor (props) {
+    super(props)
 
-  mixins: [LinkedStateMixin],
-
-  getInitialState () {
-    return {
+    this.state = {
       menu: {},
       order: {}
     }
-  },
+
+    // THIS IS ANNOYING!
+    this.addMenuItem = this.addMenuItem.bind(this)
+    this.removeMenuItem = this.removeMenuItem.bind(this)
+    this.addItemToOrder = this.addItemToOrder.bind(this)
+    this.removeItemFromOrder = this.removeItemFromOrder.bind(this)
+    this.loadSamples = this.loadSamples.bind(this)
+    this.linkState = this.linkState.bind(this)
+  }
 
   componentDidMount () {
     // Sync data with proper "store" from Firebase
@@ -34,11 +42,11 @@ const App = React.createClass({
         order: JSON.parse(localStore)
       })
     }
-  },
+  }
 
   componentWillUpdate (nextProps, nextState) {
     localStorage.setItem(`order-${this.props.params.storeId}`, JSON.stringify(nextState.order))
-  },
+  }
 
   addMenuItem (menuItem) {
     const timestamp = new Date().getTime()
@@ -46,7 +54,7 @@ const App = React.createClass({
     this.state.menu['item-'+ timestamp] = menuItem
     // then set the state (only pass changed values for perf)
     this.setState({ menu: this.state.menu })
-  },
+  }
 
   removeMenuItem (key) {
     if (confirm('Are you sure you want to remove this item?')) {
@@ -55,7 +63,7 @@ const App = React.createClass({
         menu: this.state.menu
       })
     }
-  },
+  }
 
   addItemToOrder (key) {
     // Add to existing count, or create it and set to 1
@@ -63,20 +71,20 @@ const App = React.createClass({
     this.setState({
       order: this.state.order
     })
-  },
+  }
 
   removeItemFromOrder (key) {
     delete this.state.order[key]
     this.setState({
       order: this.state.order
     })
-  },
+  }
 
   loadSamples () {
     this.setState({
       menu: require('../sample-items')
     })
-  },
+  }
 
   render () {
     return (
@@ -108,6 +116,8 @@ const App = React.createClass({
       </div>
     )
   }
-})
+}
+
+reactMixin.onClass(App, LinkedStateMixin)
 
 export default App
